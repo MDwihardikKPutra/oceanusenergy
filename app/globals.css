@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-blue: #1b7fb9;
 }
 
 html {
@@ -15,8 +16,8 @@ body {
 }
 
 ::selection {
-  background: #dbeafe;
-  color: #0A192F;
+  background: #1b7fb9;
+  color: #fff;
 }
 
 /* Subtle section divider */
@@ -32,5 +33,5 @@ body {
   transform: translateX(-50%);
   width: 40px;
   height: 1px;
-  background: #d4d4d4;
+  background: #e5e5e5;
 }

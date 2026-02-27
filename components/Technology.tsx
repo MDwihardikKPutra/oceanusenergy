@@ -1,83 +1,74 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Satellite, Cpu, ShieldCheck, Waves } from "lucide-react";
+import { Cpu, Network, BarChart4, ArrowUpRight } from "lucide-react";
 
-const techs = [
+const tech = [
     {
-        icon: Satellite,
-        num: "01",
-        title: "Seismic Imaging",
-        desc: "AI-powered 4D subsurface mapping reducing exploration risk by 40%.",
-        stat: "40% risk reduction",
+        title: "AI-Powered Analytics",
+        desc: "Predictive maintenance models that reduce downtime by 35% across offshore operations.",
+        icon: BarChart4,
     },
     {
+        title: "Digital Twin Models",
+        desc: "Real-time virtual replicas of our refineries enabling continuous process optimization and safety monitoring.",
+        icon: Network,
+    },
+    {
+        title: "Automated Robotics",
+        desc: "Autonomous subsea drones conducting pipeline inspections at depths previously inaccessible.",
         icon: Cpu,
-        num: "02",
-        title: "Digital Twins",
-        desc: "Real-time asset replicas for predictive maintenance across 50+ facilities.",
-        stat: "50+ facilities",
-    },
-    {
-        icon: ShieldCheck,
-        num: "03",
-        title: "Safety Automation",
-        desc: "ML-driven hazard detection ensuring zero-incident operations.",
-        stat: "Zero incidents",
-    },
-    {
-        icon: Waves,
-        num: "04",
-        title: "Carbon Capture",
-        desc: "95% capture rate algorithms at all CCS-equipped refineries.",
-        stat: "95% capture rate",
     },
 ];
 
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.12 } } };
+const fade = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
 export default function Technology() {
     return (
-        <section id="technology" className="py-20">
+        <section className="py-24 bg-white section-divide">
             <div className="mx-auto max-w-5xl px-6">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    className="mb-10"
+                    className="mb-14 text-center"
                 >
-                    <p className="text-[10px] uppercase tracking-widest text-neutral-400">Innovation</p>
-                    <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">Technology</h2>
+                    <p className="text-[11px] uppercase tracking-widest text-[#1b7fb9] font-medium">Innovation Focus</p>
+                    <h2 className="mt-3 text-2xl font-semibold tracking-tight text-neutral-900 md:text-3xl">Core Technologies</h2>
                 </motion.div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                    {techs.map((t, i) => (
+                <motion.div
+                    variants={stagger}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true }}
+                    className="grid gap-6 md:grid-cols-3"
+                >
+                    {tech.map((t, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 15 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.08, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                            className="group relative overflow-hidden rounded-xl bg-white p-5 shadow-sm ring-1 ring-neutral-100 transition-all duration-300 hover:shadow-md hover:ring-neutral-200"
+                            variants={fade}
+                            className="group flex flex-col items-center text-center gap-4 rounded-xl bg-white p-8 ring-1 ring-neutral-100 transition-all hover:shadow-lg hover:shadow-black/5 hover:ring-[#1b7fb9]/20"
                         >
-                            {/* Background number */}
-                            <span className="pointer-events-none absolute -right-2 -top-4 text-[72px] font-bold leading-none text-neutral-50 transition-colors group-hover:text-neutral-100/70">
-                                {t.num}
-                            </span>
-
-                            <div className="relative flex items-start gap-4">
-                                <div className="rounded-lg bg-neutral-50 p-2.5 ring-1 ring-neutral-100 transition-colors group-hover:bg-neutral-100">
-                                    <t.icon className="h-4 w-4 text-neutral-500" />
-                                </div>
-                                <div className="flex-1">
-                                    <h3 className="text-[15px] font-semibold">{t.title}</h3>
-                                    <p className="mt-1 text-[13px] leading-relaxed text-neutral-400">{t.desc}</p>
-                                    <p className="mt-2 inline-block rounded-full bg-neutral-50 px-2.5 py-0.5 text-[11px] font-medium text-neutral-500 ring-1 ring-neutral-100">
-                                        {t.stat}
-                                    </p>
-                                </div>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-50 text-[#1b7fb9] ring-1 ring-neutral-100 transition-colors group-hover:bg-[#1b7fb9]/10 group-hover:ring-[#1b7fb9]/20">
+                                <t.icon className="h-6 w-6" />
+                            </div>
+                            <div>
+                                <h3 className="text-[15px] font-semibold text-neutral-900 group-hover:text-[#1b7fb9] transition-colors">{t.title}</h3>
+                                <p className="mt-2 text-[13px] leading-relaxed text-neutral-500">{t.desc}</p>
+                            </div>
+                            <div className="mt-4 opacity-0 transition-opacity group-hover:opacity-100">
+                                <span className="inline-flex items-center gap-1 text-[12px] font-medium text-[#1b7fb9]">
+                                    Learn more <ArrowUpRight className="h-3.5 w-3.5" />
+                                </span>
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

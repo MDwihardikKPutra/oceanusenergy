@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 export default function Hero() {
     const ref = useRef(null);
@@ -66,18 +67,18 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-8 flex gap-3"
                 >
-                    <a
-                        href="#operations"
+                    <Link
+                        href="/operations"
                         className="rounded-full bg-white px-7 py-3 text-[13px] font-medium text-black hover:scale-105 hover:shadow-lg hover:shadow-white/10 active:scale-100"
                     >
                         Explore
-                    </a>
-                    <a
-                        href="#sustainability"
+                    </Link>
+                    <Link
+                        href="/sustainability"
                         className="rounded-full border border-white/20 px-7 py-3 text-[13px] font-medium text-white/80 hover:scale-105 hover:bg-white/5 hover:text-white active:scale-100"
                     >
                         Sustainability
-                    </a>
+                    </Link>
                 </motion.div>
             </motion.div>
 

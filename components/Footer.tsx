@@ -1,55 +1,77 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const cols: Record<string, string[]> = {
-    Company: ["About", "Operations", "Sustainability", "Careers"],
-    Resources: ["Annual Report", "Newsroom", "Technology"],
-    Legal: ["Privacy", "Terms", "Cookies"],
-};
+const cols: { title: string; links: { label: string; href: string }[] }[] = [
+    {
+        title: "Company",
+        links: [
+            { label: "About", href: "/" },
+            { label: "Operations", href: "/operations" },
+            { label: "Sustainability", href: "/sustainability" },
+            { label: "Careers", href: "/contact" },
+        ],
+    },
+    {
+        title: "Resources",
+        links: [
+            { label: "Annual Report", href: "/investors" },
+            { label: "Newsroom", href: "/contact" },
+            { label: "Technology", href: "/technology" },
+        ],
+    },
+    {
+        title: "Legal",
+        links: [
+            { label: "Privacy", href: "#" },
+            { label: "Terms", href: "#" },
+            { label: "Cookies", href: "#" },
+        ],
+    },
+];
 
 export default function Footer() {
     return (
-        <footer id="contact" className="bg-[#0c1a2e] py-14 text-white">
+        <footer id="contact" className="bg-white py-16 border-t border-neutral-100">
             <div className="mx-auto max-w-5xl px-6">
-                <div className="flex flex-col gap-10 md:flex-row md:justify-between">
+                <div className="flex flex-col gap-12 md:flex-row md:justify-between">
                     {/* Brand + newsletter */}
                     <div className="max-w-xs">
-                        <Link href="/" className="text-base font-semibold tracking-tight">
-                            Oceanus Energy
+                        <Link href="/" className="text-lg font-bold tracking-tight text-neutral-900">
+                            Oceanus <span className="text-[#1b7fb9]">Energy</span>
                         </Link>
-                        <p className="mt-2 text-[13px] leading-relaxed text-white/40">
-                            Powering progress from the deep.
+                        <p className="mt-3 text-[14px] leading-relaxed text-neutral-500">
+                            Powering progress from the deep to the grid, accelerating the transition to reliable clean energy.
                         </p>
-                        <form className="mt-4 flex gap-2">
+                        <form className="mt-6 flex gap-2">
                             <input
                                 type="email"
-                                placeholder="Your email"
-                                className="flex-1 rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-[13px] text-white placeholder:text-white/25 focus:border-white/25 focus:outline-none"
+                                placeholder="Your email address"
+                                className="flex-1 rounded-lg bg-neutral-50 px-4 py-2.5 text-[13px] text-neutral-800 placeholder:text-neutral-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1b7fb9]/20 transition-all border border-neutral-200"
                             />
                             <button
                                 type="submit"
-                                className="flex items-center gap-1 rounded-lg bg-white px-3 py-2 text-[13px] font-medium text-[#0c1a2e] transition-opacity hover:opacity-90"
+                                className="flex items-center gap-1 rounded-lg bg-[#1b7fb9] px-4 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#13608c]"
                             >
-                                <ArrowRight className="h-3.5 w-3.5" />
+                                <ArrowRight className="h-4 w-4" />
                             </button>
                         </form>
                     </div>
 
                     {/* Link columns */}
-                    <div className="flex gap-16">
-                        {Object.entries(cols).map(([title, links]) => (
+                    <div className="flex gap-12 md:gap-20">
+                        {cols.map(({ title, links }) => (
                             <div key={title}>
-                                <h4 className="mb-3 text-[10px] font-medium uppercase tracking-widest text-white/30">
+                                <h4 className="mb-4 text-[11px] font-semibold uppercase tracking-widest text-neutral-900">
                                     {title}
                                 </h4>
-                                <ul className="flex flex-col gap-2">
+                                <ul className="flex flex-col gap-3">
                                     {links.map((link) => (
-                                        <li key={link}>
+                                        <li key={link.label}>
                                             <Link
-                                                href="#"
-                                                className="text-[13px] text-white/40 transition-colors hover:text-white"
+                                                href={link.href}
+                                                className="text-[14px] text-neutral-500 transition-colors hover:text-[#1b7fb9]"
                                             >
-                                                {link}
+                                                {link.label}
                                             </Link>
                                         </li>
                                     ))}
@@ -59,9 +81,9 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-10 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-[11px] text-white/20 md:flex-row">
+                <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-neutral-100 pt-8 text-[12px] text-neutral-400 md:flex-row">
                     <p>&copy; {new Date().getFullYear()} Oceanus Energy. All rights reserved.</p>
-                    <p>Houston · London · Singapore · Abu Dhabi</p>
+                    <p className="font-medium">Houston · London · Singapore · Abu Dhabi</p>
                 </div>
             </div>
         </footer>

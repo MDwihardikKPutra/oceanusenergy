@@ -131,7 +131,7 @@ export default function PageHero({ eyebrow, title, description, bgImage, overlay
             <section className="relative overflow-hidden min-h-[70vh] flex items-center border-b border-neutral-900 pt-20">
                 <div className="absolute inset-0">
                     <img src={bgImage} alt={title} className="h-full w-full object-cover" />
-                    <div className={`absolute inset-0 ${overlayColor ? '' : 'bg-gradient-to-r from-[#0c3d5e]/90 via-[#1b7fb9]/60 to-[#1b7fb9]/30'}`} style={overlayColor ? { background: `linear-gradient(to right, ${overlayColor}cc, ${overlayColor}80, ${overlayColor}4d)` } : undefined} />
+                    <div className={`absolute inset-0 ${overlayColor ? '' : 'bg-gradient-to-r from-black/90 via-black/60 to-black/40'}`} style={overlayColor ? { background: `linear-gradient(to right, ${overlayColor}cc, ${overlayColor}80, ${overlayColor}4d)` } : undefined} />
                 </div>
 
                 <div className="relative mx-auto max-w-6xl px-6 text-left w-full py-16">

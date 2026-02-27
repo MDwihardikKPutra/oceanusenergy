@@ -79,6 +79,7 @@ export default function OperationsPage() {
                 title="Our Operations"
                 description="From deep-water exploration to renewable energy, we operate at every stage of the energy value chain."
                 bgImage="/turbin.png"
+                overlayColor="#0c3d5e"
                 variant="image-center"
             />
             {/* 

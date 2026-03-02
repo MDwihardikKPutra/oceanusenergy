@@ -5,6 +5,7 @@ import Investors from "@/components/Investors";
 import Footer from "@/components/Footer";
 import HomeCTA from "@/components/HomeCTA";
 import { TrendingUp, UserRound, Download, LineChart } from "lucide-react";
+import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
     title: "Investors | Oceanus Energy",
@@ -17,7 +18,7 @@ function StockInfo() {
         <section className="bg-neutral-50 py-24 border-y border-neutral-100">
             <div className="mx-auto max-w-5xl px-6">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
-                    <div className="w-full md:w-1/2">
+                    <ScrollReveal direction="left" className="w-full md:w-1/2">
                         <p className="text-[11px] uppercase tracking-widest text-[#1b7fb9] font-medium">Market Data</p>
                         <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl text-neutral-900">Stock Performance</h2>
                         <p className="mt-4 text-[14px] leading-relaxed text-neutral-500">
@@ -39,13 +40,13 @@ function StockInfo() {
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div className="w-full md:w-1/2 min-h-[300px] flex items-center justify-center bg-white rounded-xl ring-1 ring-neutral-200 shadow-sm p-8">
+                    </ScrollReveal>
+                    <ScrollReveal direction="right" delay={0.2} className="w-full md:w-1/2 min-h-[300px] flex items-center justify-center bg-white rounded-xl ring-1 ring-neutral-200 shadow-sm p-8">
                         <div className="text-center text-neutral-400">
                             <LineChart className="h-12 w-12 mx-auto mb-3 opacity-30 text-[#1b7fb9]" />
                             <p className="text-[13px] uppercase tracking-widest font-medium text-neutral-500">Interactive Chart Preview</p>
                         </div>
-                    </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>
@@ -62,21 +63,23 @@ function BoardOfDirectors() {
     return (
         <section className="bg-white py-24 section-divide">
             <div className="mx-auto max-w-5xl px-6">
-                <div className="text-center mb-16">
+                <ScrollReveal className="text-center mb-16">
                     <p className="text-[11px] uppercase tracking-widest text-[#1b7fb9] font-medium">Governance</p>
                     <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl text-neutral-900">Executive Leadership</h2>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                </ScrollReveal>
+                <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {board.map((b, i) => (
-                        <div key={i} className="group flex flex-col items-center text-center p-6 bg-neutral-50 rounded-xl ring-1 ring-neutral-100 hover:shadow-md hover:bg-white hover:ring-[#1b7fb9]/20 transition-all cursor-pointer">
-                            <div className="h-16 w-16 bg-[#1b7fb9]/10 text-[#1b7fb9] rounded-full flex items-center justify-center mb-4 ring-1 ring-[#1b7fb9]/20 group-hover:bg-[#1b7fb9] group-hover:text-white transition-colors">
-                                <UserRound className="h-7 w-7" />
+                        <StaggerItem key={i}>
+                            <div className="group flex flex-col items-center text-center p-6 bg-neutral-50 rounded-xl ring-1 ring-neutral-100 hover:shadow-md hover:bg-white hover:ring-[#1b7fb9]/20 transition-all cursor-pointer">
+                                <div className="h-16 w-16 bg-[#1b7fb9]/10 text-[#1b7fb9] rounded-full flex items-center justify-center mb-4 ring-1 ring-[#1b7fb9]/20 group-hover:bg-[#1b7fb9] group-hover:text-white transition-colors">
+                                    <UserRound className="h-7 w-7" />
+                                </div>
+                                <p className="text-[15px] font-semibold text-neutral-900 group-hover:text-[#1b7fb9] transition-colors">{b.name}</p>
+                                <p className="text-[12px] text-neutral-500 mt-1">{b.role}</p>
                             </div>
-                            <p className="text-[15px] font-semibold text-neutral-900 group-hover:text-[#1b7fb9] transition-colors">{b.name}</p>
-                            <p className="text-[12px] text-neutral-500 mt-1">{b.role}</p>
-                        </div>
+                        </StaggerItem>
                     ))}
-                </div>
+                </StaggerContainer>
             </div>
         </section>
     );
@@ -88,21 +91,23 @@ function ReportsArchive() {
     ];
     return (
         <section className="bg-neutral-50 py-24 text-center border-y border-neutral-100">
-            <div className="mx-auto max-w-5xl px-6">
+            <ScrollReveal className="mx-auto max-w-5xl px-6">
                 <p className="text-[11px] uppercase tracking-widest text-[#1b7fb9] font-medium">Downloads</p>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl text-neutral-900">Document Archive</h2>
                 <p className="mt-4 text-[14px] leading-relaxed text-neutral-500 mb-10">
                     Access historical financial reports, ESG findings, and quarterly presentations.
                 </p>
-                <div className="flex flex-col gap-3 max-w-lg mx-auto">
-                    {reports.map((r, i) => (
-                        <div key={i} className="group flex items-center justify-between p-4 bg-white rounded-lg ring-1 ring-neutral-200 hover:ring-[#1b7fb9] hover:shadow-md transition-all cursor-pointer">
+            </ScrollReveal>
+            <StaggerContainer className="flex flex-col gap-3 max-w-lg mx-auto px-6">
+                {reports.map((r, i) => (
+                    <StaggerItem key={i}>
+                        <div className="group flex items-center justify-between p-4 bg-white rounded-lg ring-1 ring-neutral-200 hover:ring-[#1b7fb9] hover:shadow-md transition-all cursor-pointer">
                             <span className="text-[14px] font-medium text-neutral-800 group-hover:text-[#1b7fb9] transition-colors">{r}</span>
                             <Download className="h-4 w-4 text-neutral-400 group-hover:text-[#1b7fb9] transition-colors" />
                         </div>
-                    ))}
-                </div>
-            </div>
+                    </StaggerItem>
+                ))}
+            </StaggerContainer>
         </section>
     );
 }

@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Operations from "@/components/Operations";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
+import WorldMap from "@/components/WorldMap";
 import { Globe2, ShieldCheck, MapPin, CheckCircle2 } from "lucide-react";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
@@ -31,11 +32,8 @@ function GlobalReach() {
                             <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-[#1b7fb9]" /> 45 Renewable Projects</li>
                         </ul>
                     </ScrollReveal>
-                    <ScrollReveal direction="right" delay={0.2} className="w-full lg:w-7/12 mt-8 lg:mt-0 relative aspect-video rounded-xl bg-white shadow-sm ring-1 ring-neutral-100 overflow-hidden">
-                        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center grayscale mix-blend-overlay" />
-                        <div className="absolute top-1/4 left-1/4 h-3 w-3 rounded-full bg-[#1b7fb9] ring-4 ring-[#1b7fb9]/30 animate-pulse" />
-                        <div className="absolute top-1/2 left-2/3 h-3 w-3 rounded-full bg-[#1b7fb9] ring-4 ring-[#1b7fb9]/30 animate-pulse" />
-                        <div className="absolute bottom-1/3 left-1/2 h-4 w-4 rounded-full bg-[#1b7fb9]/80 ring-4 ring-[#1b7fb9]/20 animate-pulse" />
+                    <ScrollReveal direction="right" delay={0.2} className="w-full lg:w-7/12 mt-8 lg:mt-0">
+                        <WorldMap />
                     </ScrollReveal>
                 </div>
             </div>

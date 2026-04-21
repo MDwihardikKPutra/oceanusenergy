@@ -5,7 +5,7 @@ import Technology from "@/components/Technology";
 import HomeNews from "@/components/HomeNews";
 import HomeCTA from "@/components/HomeCTA";
 import Footer from "@/components/Footer";
-import { Cpu, ShieldAlert, Network, BrainCircuit } from "lucide-react";
+import { Cpu, ShieldAlert, Network, BrainCircuit, Bot, Database, Zap, ArrowRight, MapPin } from "lucide-react";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -16,30 +16,83 @@ export const metadata: Metadata = {
 
 function InnovationLabs() {
     const labs = [
-        { name: "Houston Deep-Tech", focus: "Subsea Robotics & Automated Drilling" },
-        { name: "Singapore Digital Hub", focus: "AI/ML Logistics & Supply Chain" },
-        { name: "London Clean-Tech", focus: "Carbon Capture Algorithms & Hydrogen" }
+        {
+            name: "Houston Deep-Tech",
+            focus: "Subsea Robotics & Automated Drilling",
+            region: "Americas",
+            icon: Bot,
+            coords: "29.76° N, 95.37° W"
+        },
+        {
+            name: "Singapore Digital Hub",
+            focus: "AI/ML Logistics & Supply Chain",
+            region: "Asia Pacific",
+            icon: Database,
+            coords: "1.35° N, 103.82° E"
+        },
+        {
+            name: "London Clean-Tech",
+            focus: "Carbon Capture Algorithms & Hydrogen",
+            region: "Europe",
+            icon: Zap,
+            coords: "51.51° N, 0.13° W"
+        }
     ];
 
     return (
         <section className="bg-neutral-50 py-24 border-y border-neutral-100">
             <div className="mx-auto max-w-5xl px-6">
-                <div className="flex flex-col md:flex-row gap-12">
-                    <ScrollReveal direction="left" className="w-full md:w-5/12">
-                        <div className="inline-flex items-center justify-center p-2.5 bg-[#1b7fb9]/10 text-[#1b7fb9] rounded-lg mb-4 ring-1 ring-[#1b7fb9]/20">
+                <div className="flex flex-col lg:flex-row gap-16">
+                    <ScrollReveal direction="left" className="w-full lg:w-5/12">
+                        <div className="inline-flex items-center justify-center p-2.5 bg-[#1b7fb9]/10 text-[#1b7fb9] rounded-lg mb-6 ring-1 ring-[#1b7fb9]/20">
                             <BrainCircuit className="h-5 w-5" />
                         </div>
-                        <h2 className="text-2xl font-semibold tracking-tight md:text-3xl text-neutral-900">Global Innovation Labs</h2>
-                        <p className="mt-4 text-[14px] leading-relaxed text-neutral-500">
+                        <h2 className="text-3xl font-semibold tracking-tight text-neutral-900">Global Innovation Labs</h2>
+                        <p className="mt-5 text-[15px] leading-relaxed text-neutral-500">
                             With an annual R&D budget exceeding $1.2B, Oceanus accelerates the energy transition through three strategic research centers. Our engineers prototype tomorrow's hardware and train the models that optimize today's assets.
                         </p>
+
+                        <div className="mt-8 flex flex-col gap-4 border-l border-neutral-200 pl-6">
+                            <div className="flex flex-col">
+                                <span className="text-[20px] font-semibold text-neutral-900">120+</span>
+                                <span className="text-[12px] text-neutral-500 uppercase tracking-wider">Patents Filed 2024</span>
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-[20px] font-semibold text-neutral-900">$1.2B</span>
+                                <span className="text-[12px] text-neutral-500 uppercase tracking-wider">Annual R&D Spends</span>
+                            </div>
+                        </div>
                     </ScrollReveal>
-                    <StaggerContainer className="w-full md:w-7/12 flex flex-col gap-3">
+
+                    <StaggerContainer className="w-full lg:w-7/12 flex flex-col gap-4">
                         {labs.map((l, i) => (
                             <StaggerItem key={i}>
-                                <div className="flex flex-col justify-center rounded-xl bg-white p-5 ring-1 ring-neutral-100 border-l-4 border-l-[#1b7fb9] hover:shadow-sm transition-all">
-                                    <span className="text-[14px] font-semibold text-neutral-900">{l.name}</span>
-                                    <span className="text-[12px] text-neutral-500 mt-1">{l.focus}</span>
+                                <div className="group relative flex items-center gap-5 rounded-2xl bg-white p-6 ring-1 ring-neutral-200/60 transition-all duration-300 hover:ring-[#1b7fb9]/30 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                                    {/* Accent Gradient Line */}
+                                    <div className="absolute left-0 top-1/2 -translate-y-1/2 h-8 w-[3px] bg-gradient-to-b from-[#1b7fb9] to-[#1b7fb9]/30 rounded-r-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    
+                                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-neutral-50 text-[#1b7fb9] ring-1 ring-neutral-100 transition-all duration-300 group-hover:bg-[#1b7fb9] group-hover:text-white group-hover:scale-110">
+                                        <l.icon className="h-5 w-5" />
+                                    </div>
+
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center gap-2 mb-0.5">
+                                            <span className="text-[14px] font-semibold text-neutral-900 truncate">{l.name}</span>
+                                            <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-neutral-100 text-neutral-500 font-medium whitespace-nowrap uppercase tracking-tight">{l.region}</span>
+                                        </div>
+                                        <p className="text-[13px] text-neutral-500 line-clamp-1">{l.focus}</p>
+                                        
+                                        <div className="mt-2 flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                                            <div className="flex items-center gap-1.5 text-[11px] text-neutral-400 font-mono">
+                                                <MapPin className="h-3 w-3" />
+                                                {l.coords}
+                                            </div>
+                                            <div className="h-1 w-1 rounded-full bg-neutral-300" />
+                                            <span className="text-[11px] font-medium text-[#1b7fb9] flex items-center gap-1 cursor-pointer hover:underline">
+                                                Lab Profile <ArrowRight className="h-3 w-3" />
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </StaggerItem>
                         ))}
